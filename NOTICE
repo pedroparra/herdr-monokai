@@ -1,0 +1,51 @@
+Monokai for Herdr
+Copyright 2026 Pedro J. Parra
+
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This project includes material from the projects below.
+
+
+Herdr (https://github.com/herdrdev/herdr-app)
+Licensed under the Apache License, Version 2.0.
+
+  - layouts/monokai-for-herdr.json is Herdr's layouts/main.json (0.1.13)
+    with two keys added at its root: "theme": "monokai" and
+    "preview": "layouts/monokai-for-herdr.svg". Nothing else is changed.
+  - The colors Herdr derives from themes/monokai.json (panels, borders,
+    agent statuses) follow Herdr's own rules in src/settings.rs.
+
+
+Monokai
+
+  The Monokai color scheme was created by Wimer Hazenberg in 2006.
+  themes/monokai.json uses its original colors. It is not affiliated with
+  or endorsed by Monokai or Monokai Pro, and takes nothing from Monokai Pro.
+
+
+Visual Studio Code (https://github.com/microsoft/vscode)
+
+  The terminal background, text and sidebar colors follow the Monokai
+  theme built into Visual Studio Code (extensions/theme-monokai).
+
+  MIT License
+
+  Copyright (c) 2015 - present Microsoft Corporation
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
