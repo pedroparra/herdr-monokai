@@ -2,7 +2,7 @@
 
 The original Monokai colors for the [Herdr](https://herdr.dev) app. Olive-black panels, terminals on `#272822` with Monokai's pink, green, yellow, cyan and purple, and an orange ring on the pane you're typing in. It's Herdr's own window, unchanged: spaces and agents on the left, tabs on top, panes as cards. Only the colors are new.
 
-![Monokai for Herdr](layouts/monokai-for-herdr.svg)
+![Monokai for Herdr](preview.png)
 
 **No mods, no code.** The layout is two JSON files and a picture. Herdr's own mods draw everything, so there is nothing here that runs, reads your files or reaches the network.
 
@@ -42,6 +42,16 @@ To update, delete the three files below from `~/.config/herdr-app/` and install 
 
 Your spaces, tabs and terminals live in herdr-core, not in the layout, so nothing else changes.
 
+### Try it without touching your own Herdr
+
+```sh
+scripts/demo.sh          # a second Herdr window with this layout and demo content
+scripts/demo.sh shot     # save preview.png from it
+scripts/demo.sh stop     # quit it and stop its core
+```
+
+The demo has its own Herdr home, its own herdr-core session and its own `HOME`, so it can't see or change your spaces, terminals or settings. It opens three example projects with agents in every state. The agents are small scripts that print text and report a status; no real agent runs. The picture above is this demo.
+
 ## The colors
 
 | | black | red | green | yellow | blue | magenta | cyan | white |
@@ -65,12 +75,15 @@ A few choices made for a terminal app with agents:
 | `layouts/monokai-for-herdr.json` | Herdr's `main` layout with `"theme": "monokai"` at its root |
 | `layouts/monokai-for-herdr.svg` | the picture Herdr's settings show for the layout |
 | `RECIPE.md` | how to rebuild it from scratch, with every color and where it goes |
+| `preview.png` | the picture for this README and the Herdr gallery |
+| `scripts/demo.sh` | the demo window above; `demo-agent.sh` and `demo-shell.sh` fill its panes |
 
 ## Credits
 
 - The Monokai color scheme is by Wimer Hazenberg (2006). This port is not affiliated with or endorsed by Monokai or Monokai Pro.
 - The terminal, text and sidebar colors follow the Monokai theme built into [Visual Studio Code](https://github.com/microsoft/vscode) (MIT).
 - The layout is Herdr's own `main` ([herdrdev/herdr-app](https://github.com/herdrdev/herdr-app), Apache-2.0).
+- The isolated demo follows the approach of [shellscape/herdr-whitby](https://github.com/shellscape/herdr-whitby)'s demo script.
 
 ## License
 
