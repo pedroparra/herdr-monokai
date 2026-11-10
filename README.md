@@ -1,6 +1,6 @@
 # Monokai for Herdr
 
-The original Monokai colors for the [Herdr](https://herdr.dev) app. Olive-black panels, terminals on `#272822` with Monokai's pink, green, yellow, cyan and purple, and an orange ring on the pane you're typing in. It's Herdr's own window, unchanged: spaces and agents on the left, tabs on top, panes as cards. Only the colors are new.
+The classic Monokai from Sublime Text and VS Code, across the whole [Herdr](https://herdr.dev) window: sidebar, tabs and every terminal. Agents show their state in Monokai's own colors (yellow working, pink needs you, cyan done), and an orange ring marks the pane you're typing in. It's Herdr's own window, unchanged: spaces and agents on the left, tabs on top, panes as cards. Only the colors are new.
 
 ![Monokai for Herdr](preview.png)
 
@@ -46,11 +46,11 @@ Your spaces, tabs and terminals live in herdr-core, not in the layout, so nothin
 
 ```sh
 scripts/demo.sh          # a second Herdr window with this layout and demo content
-scripts/demo.sh shot     # save preview.png from it
+scripts/demo.sh shot     # save preview.png from it (needs uv)
 scripts/demo.sh stop     # quit it and stop its core
 ```
 
-The demo has its own Herdr home, its own herdr-core session and its own `HOME`, so it can't see or change your spaces, terminals or settings. It opens three example projects with agents in every state. The agents are small scripts that print text and report a status; no real agent runs. The picture above is this demo.
+The demo has its own Herdr home, its own herdr-core session and its own `HOME`, so it can't see or change your spaces, terminals or settings. It opens three example projects with agents in every state. The agents are small scripts that print text and report a status; no real agent runs. The picture above is this demo, framed with a title by `scripts/cover.py`.
 
 ## The colors
 
@@ -77,6 +77,7 @@ A few choices made for a terminal app with agents:
 | `RECIPE.md` | how to rebuild it from scratch, with every color and where it goes |
 | `preview.png` | the picture for this README and the Herdr gallery |
 | `scripts/demo.sh` | the demo window above; `demo-agent.sh` and `demo-shell.sh` fill its panes |
+| `scripts/cover.py` | frames the demo's screenshot into `preview.png` |
 
 ## Credits
 

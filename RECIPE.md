@@ -1,6 +1,6 @@
 # Monokai for Herdr
 
-Herdr's own window in the original Monokai colors: olive-black panels, terminals on `#272822` with Monokai's pink, green, yellow, cyan and purple, and an orange ring on the pane you're typing in. Nothing moves or changes place: spaces and agents on the left, tabs on top, panes as cards, a status bar. The `monokai` theme also shows up in Settings → Look, so you can use it with any other layout.
+The classic Monokai from Sublime Text and VS Code, across the whole Herdr window: sidebar, tabs and every terminal. Agents show their state in Monokai's own colors (yellow working, pink needs you, cyan done), and an orange ring marks the pane you're typing in. Normal ANSI colors are the vivid ones, so Claude Code and Codex output doesn't turn grey. Just colors: no mods, no code, nothing runs. Want only the palette? Pick monokai in Settings → Look, in any layout.
 
 ![Monokai for Herdr](preview.png)
 

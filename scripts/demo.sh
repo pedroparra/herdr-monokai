@@ -6,7 +6,7 @@
 # no real agent runs. (Same approach as shellscape/herdr-whitby's demo.)
 #
 #   scripts/demo.sh          start it (DEMO_SIZE=1280x800 sets the window size)
-#   scripts/demo.sh shot     save preview.png from it (1600x1000)
+#   scripts/demo.sh shot     save preview.png from it: the gallery cover, 1600x1000
 #   scripts/demo.sh stop     quit it and stop its core
 #
 # DEMO_DIR picks where it lives (default: $TMPDIR/hmd). Keep it short: Herdr and
@@ -35,12 +35,22 @@ case ${1:-start} in
     print "Stopped the demo in $dir."
     exit 0 ;;
   shot)
-    out=$repo/preview.png
+    # A screenshot of the demo window, framed by scripts/cover.py into the gallery
+    # cover. It needs uv (for Pillow) and Herdr's two fonts, fetched once into $dir.
+    command -v uv >/dev/null || { print -u2 "scripts/demo.sh shot needs uv (https://docs.astral.sh/uv/)."; exit 1; }
+    mkdir -p "$dir/fonts"
+    for f in JetBrainsMono-Variable.ttf Geist.ttf; do
+      [[ -s $dir/fonts/$f ]] || curl -fsSL "https://herdr.dev/live/fonts/$f" -o "$dir/fonts/$f"
+    done
     in_demo herdr-app shot "$dir/shot.png" >/dev/null
-    sips -z 1000 1600 "$dir/shot.png" --out "$out" >/dev/null
-    print "Saved $out"
+    uv run -q --with pillow python "$repo/scripts/cover.py" "$dir/shot.png" "$repo/preview.png" "$dir/fonts"
     exit 0 ;;
 esac
+
+# Start from nothing: a core left from an earlier run would bring back its spaces.
+in_demo herdr-app do app.quit >/dev/null 2>&1 || true
+in_demo hc server stop >/dev/null 2>&1 || true
+rm -rf "$dir/st"
 
 # The demo's home: the layout and theme, past the welcome and the update notice.
 mkdir -p "$dir"/{app/layouts,app/themes,cfg,st,rt,zdot,home}

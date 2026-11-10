@@ -21,7 +21,7 @@ if [[ $show == transcript ]]; then
   print "${dim}  ⎿  Read 48 lines${r}"
   print
   print "${grn}⏺${r} ${b}Write${r}(src/middleware/rate-limit.ts)"
-  print "${dim}  ⎿  Wrote 31 lines${r}"
+  print "${dim}  ⎿  Wrote 18 lines${r}"
   print
   print "${grn}⏺${r} ${b}Update${r}(src/routes/login.ts)"
   print "${dim}  ⎿  2 additions, 1 removal${r}"
