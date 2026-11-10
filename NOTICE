@@ -9,10 +9,10 @@ This project includes material from the projects below.
 Herdr (https://github.com/herdrdev/herdr-app)
 Licensed under the Apache License, Version 2.0.
 
-  - layouts/monokai-for-herdr.json is Herdr's layouts/main.json (0.1.13)
-    with two keys added at its root: "theme": "monokai" and
+  - layouts/monokai-for-herdr.json is Herdr's defaults/layouts/main.json
+    (0.1.13 to 0.1.14) with two keys added at its root: "theme": "monokai" and
     "preview": "layouts/monokai-for-herdr.svg". Nothing else is changed.
-  - The colors Herdr derives from themes/monokai.json (panels, borders,
+  - The colors Herdr derives from the themes/ files (panels, borders,
     agent statuses) follow Herdr's own rules in src/settings.rs.
 
 
@@ -27,6 +27,8 @@ Visual Studio Code (https://github.com/microsoft/vscode)
 
   The terminal background, text and sidebar colors follow the Monokai
   theme built into Visual Studio Code (extensions/theme-monokai).
+  themes/monokai-dimmed.json takes its colors from the Monokai Dimmed
+  theme built into Visual Studio Code (extensions/theme-monokai-dimmed).
 
   MIT License
 

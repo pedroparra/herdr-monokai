@@ -7,6 +7,7 @@
 #
 #   scripts/demo.sh          start it (DEMO_SIZE=1280x800 sets the window size)
 #   scripts/demo.sh shot     save preview.png from it: the gallery cover, 1600x1000
+#   scripts/demo.sh gif      save states.gif: an agent changing state, for the README
 #   scripts/demo.sh stop     quit it and stop its core
 #
 # DEMO_DIR picks where it lives (default: $TMPDIR/hmd). Keep it short: Herdr and
@@ -45,18 +46,38 @@ case ${1:-start} in
     in_demo herdr-app shot "$dir/shot.png" >/dev/null
     uv run -q --with pillow python "$repo/scripts/cover.py" "$dir/shot.png" "$repo/preview.png" "$dir/fonts"
     exit 0 ;;
+  gif)
+    # The agent in the "checkout test" tab goes working → done → needs you while the
+    # window is filmed; scripts/states-gif.py turns the frames into states.gif.
+    command -v uv >/dev/null || { print -u2 "scripts/demo.sh gif needs uv (https://docs.astral.sh/uv/)."; exit 1; }
+    zmodload zsh/datetime   # EPOCHREALTIME
+    ctl=$dir/home/.demo/Fix-flaky-checkout-test   # see demo-agent.sh
+    mkdir -p "${ctl:h}"
+    rm -rf "$dir/frames" && mkdir -p "$dir/frames"
+    n=0
+    for st in working done "blocked permission"; do
+      print -r -- "$st" > "$ctl"
+      end=$(( EPOCHREALTIME + 3 ))
+      while (( EPOCHREALTIME < end )); do
+        in_demo herdr-app shot "$dir/frames/$(printf %03d $n).png" >/dev/null
+        n=$(( n + 1 ))
+        sleep 0.15
+      done
+    done
+    uv run -q --with pillow python "$repo/scripts/states-gif.py" "$repo/states.gif" "$dir"/frames/*.png
+    exit 0 ;;
 esac
 
 # Start from nothing: a core left from an earlier run would bring back its spaces.
 in_demo herdr-app do app.quit >/dev/null 2>&1 || true
 in_demo hc server stop >/dev/null 2>&1 || true
-rm -rf "$dir/st"
+rm -rf "$dir/st" "$dir/home/.demo"
 
 # The demo's home: the layout and theme, past the welcome and the update notice.
 mkdir -p "$dir"/{app/layouts,app/themes,cfg,st,rt,zdot,home}
 chmod 700 "$dir/rt"
 cp "$repo"/layouts/monokai-for-herdr.{json,svg} "$dir/app/layouts/"
-cp "$repo"/themes/monokai.json "$dir/app/themes/"
+cp "$repo"/themes/*.json "$dir/app/themes/"
 print '{"layout":"monokai-for-herdr","frame.welcomed":"finished"}' > "$dir/app/shared.json"
 print "{\"last_run\":\"$(herdr-app --version | awk '{print $NF}')\",\"presented\":[]}" > "$dir/app/update-notes.json"
 print "{\"zoom\":1.0,\"telemetry\":false,\"sounds\":{\"enabled\":false},\"core\":\"$hc_bin\"}" > "$dir/app/settings.json"

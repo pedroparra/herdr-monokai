@@ -1,0 +1,59 @@
+name: Follow Herdr's main layout
+
+# Monokai is Herdr's main layout with a theme. Once a week this rebuilds it from the
+# newest Herdr release and opens a PR (or an issue) if Herdr changed its window, so people using
+# Monokai get Herdr's new buttons and panels too.
+
+on:
+  schedule:
+    - cron: "17 6 * * 1"   # Mondays, 06:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write   # when Actions may not open PRs here, it opens an issue instead
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Rebuild the layout from Herdr's main.json
+        id: sync
+        run: echo "tag=$(python3 scripts/sync-main.py)" >> "$GITHUB_OUTPUT"
+
+      - name: Open a PR if it changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.sync.outputs.tag }}
+        run: |
+          if git diff --quiet; then
+            echo "The layout already matches Herdr $TAG's main."
+            exit 0
+          fi
+          branch="sync-main-$TAG"
+          if git ls-remote --exit-code --heads origin "$branch" >/dev/null; then
+            echo "Branch $branch already exists; its PR is waiting."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git commit -am "Follow Herdr $TAG's main layout"
+          git push origin "$branch"
+          title="Follow Herdr $TAG's main layout"
+          body="Herdr $TAG changed its main layout (\`defaults/layouts/main.json\`). Branch \`$branch\` rebuilds \`layouts/monokai-for-herdr.json\` from it with \`scripts/sync-main.py\`: the same file plus \`theme\` and \`preview\`.
+
+          Before merging:
+          - switch to it in Herdr $TAG and look at every region;
+          - if it uses something new, raise \"Needs Herdr\" in README.md and the version in RECIPE.md;
+          - run \`scripts/demo.sh\` and \`scripts/demo.sh shot\` if the window looks different, so the gallery picture matches."
+          # Opening PRs needs "Allow GitHub Actions to create and approve pull requests"
+          # in Settings → Actions → General. Without it, an issue links to the branch.
+          if ! gh pr create --base main --head "$branch" --title "$title" --body "$body"; then
+            gh issue create --title "$title" --body "$body
+
+          Open the PR: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/compare/main...$branch?expand=1"
+          fi

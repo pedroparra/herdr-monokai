@@ -42,7 +42,15 @@ else
 fi
 
 if [[ $state == done ]]; then printf '\e]7501;state=working:app=%s\a' "$app"; sleep 4; fi
+# `demo.sh gif` moves an agent through states by writing "<state> [kind]" into this
+# file; without it the agent keeps the state it started with.
+ctl=$HOME/.demo/${title// /-}
+sent= last=0
 while true; do
-  printf '\e]7501;state=%s:app=%s%s\a' "$state" "$app" "${kind:+:kind=$kind}"
-  sleep 5
+  [[ -r $ctl ]] && read -r state kind < "$ctl"
+  if [[ $state:$kind != "$sent" ]] || (( SECONDS - last >= 5 )); then
+    printf '\e]7501;state=%s:app=%s%s\a' "$state" "$app" "${kind:+:kind=$kind}"
+    sent=$state:$kind last=$SECONDS
+  fi
+  sleep 0.2
 done
