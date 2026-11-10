@@ -4,6 +4,8 @@ The classic Monokai dark theme from Sublime Text and VS Code, across the whole H
 
 ![Monokai](preview.png)
 
+*This file is the recipe Herdr agents follow to build the layout from scratch, so it gives every size and color exactly. For the short version, see the [README](README.md).*
+
 ## What you see
 
 Left to right, filling the window (no system title bar; macOS window buttons at 12, 16):
