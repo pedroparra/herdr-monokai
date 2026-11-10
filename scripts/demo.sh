@@ -1,5 +1,5 @@
 #!/bin/zsh
-# Opens a second Herdr window with Monokai for Herdr and demo content: three spaces,
+# Opens a second Herdr window with the Monokai layout and demo content: three spaces,
 # agents in every state, a terminal full of colors. It has its own Herdr home, its own
 # herdr-core session and its own HOME, so it can't see or change your spaces,
 # terminals or settings. The agents are scripts that print text and report a status;

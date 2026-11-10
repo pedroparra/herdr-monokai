@@ -1,8 +1,8 @@
-# Monokai for Herdr
+# Monokai
 
 The classic Monokai from Sublime Text and VS Code, across the whole [Herdr](https://herdr.dev) window: sidebar, tabs and every terminal. Agents show their state in Monokai's own colors (yellow working, pink needs you, cyan done), and an orange ring marks the pane you're typing in. It's Herdr's own window, unchanged: spaces and agents on the left, tabs on top, panes as cards. Only the colors are new.
 
-![Monokai for Herdr](preview.png)
+![Monokai](preview.png)
 
 **No mods, no code.** The layout is two JSON files and a picture. Herdr's own mods draw everything, so there is nothing here that runs, reads your files or reaches the network.
 

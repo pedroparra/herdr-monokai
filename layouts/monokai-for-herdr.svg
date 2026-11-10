@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
-  <!-- Monokai for Herdr: Herdr's main window in the monokai theme -->
+  <!-- Monokai: Herdr's main window in the monokai theme -->
   <rect width="320" height="200" rx="8" fill="#232420"/>
   <!-- sidebar (chrome) -->
   <path d="M8 0H60V200H8A8 8 0 0 1 0 192V8A8 8 0 0 1 8 0Z" fill="#1e1f1c"/>
