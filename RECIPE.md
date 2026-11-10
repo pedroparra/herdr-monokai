@@ -8,21 +8,21 @@ The classic Monokai dark theme from Sublime Text and VS Code, across the whole H
 
 ## What you see
 
-Left to right, filling the window (no system title bar; macOS window buttons at 12, 16):
+Herdr's own window in Monokai's olive blacks. There is no system title bar: the macOS window buttons sit in the top-left corner (at 12, 16). From left to right:
 
-1. **The sidebar**, 268px, `#1e1f1c`. A 46px brand row, the Spaces list and the Agents list sharing the height, then a 69px footer (Settings, Add machine). Selected rows sit on a `#ffffff17` pill. Section titles and secondary text are `#737370`; row text is `#eeeeef`.
-2. **The tab bar**, 42px, `#1e1f1c`, with a 1px `#ffffff18` line under it. The active tab is a `#3a3b36` pill with a `#ffffff18` border; the others are `#9e9f9d` text. Files and Changes buttons sit on the right.
-3. **The work area**, `#232420`, with 8px padding and 8px gaps. Each pane is a card on `#272822`: 10px radius, 1px `#ffffff18` border, a 30px header with the program, its name and its folder. The focused pane's border is orange, `#fd971f`. The Files/Changes panel (368px, hidden at first) opens on the right.
-4. **The status bar**, 28px, `#1e1f1c`.
+1. **The sidebar**, in the darkest olive (`#1e1f1c`, 268px wide). At the top, Herdr's name and buttons (a 46px row). Below, your Spaces and your Agents, sharing the height equally. At the bottom, Settings and Add machine (69px). The selected row sits on a soft light pill (`#ffffff17`). Names are near-white (`#eeeeef`); section titles and secondary text are grey (`#737370`).
+2. **The tab bar** across the top, the same dark olive (`#1e1f1c`, 42px tall), with a thin line under it (1px, `#ffffff18`). The open tab is a lighter pill (`#3a3b36` with a `#ffffff18` border); the other tabs are grey text (`#9e9f9d`). The Files and Changes buttons sit on the right.
+3. **The work area** below it, a slightly lighter olive (`#232420`), with 8px of space around and between the panes. Each pane is a card in the Monokai background (`#272822`) with rounded corners (10px), a faint border (1px, `#ffffff18`) and a 30px header showing the program, its name and its folder. The pane you're typing in gets an orange border (`#fd971f`). Files and Changes open a panel on the right (368px, hidden at first).
+4. **The status bar** along the bottom, dark olive again (`#1e1f1c`, 28px tall).
 
-Terminals: text `#f8f8f2`, selection `#49483e`, cursor `#f8f8f0`. The 16 colors:
+**In the terminals**, text is off-white (`#f8f8f2`), selected text sits on a muted olive (`#49483e`) and the cursor is white (`#f8f8f0`). The colors programs print are Monokai's own: pink, green, yellow, blue, purple and teal. Each is identical in its normal and bright version, so output that uses the normal colors (most of it) looks as vivid as Monokai in an editor:
 
 | | black | red | green | yellow | blue | magenta | cyan | white |
 |---|---|---|---|---|---|---|---|---|
 | normal | `#3e3d32` | `#f92672` | `#a6e22e` | `#e6db74` | `#66d9ef` | `#ae81ff` | `#a1efe4` | `#cfcfc2` |
 | bright | `#75715e` | `#f92672` | `#a6e22e` | `#e6db74` | `#66d9ef` | `#ae81ff` | `#a1efe4` | `#f9f8f5` |
 
-Fonts are left to the person: the layout sets none, so it uses settings.json or Herdr's defaults (JetBrains Mono 14 in terminals, Geist in panels).
+The layout doesn't set fonts: it uses yours from settings.json, or Herdr's (JetBrains Mono 14 in terminals, Geist in panels).
 
 ## How it behaves
 
